@@ -24,9 +24,14 @@ class HomePage extends StatelessWidget {
                   icon: Icon(Icons.delete)));
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Get.to(AddProductPage());
-      }),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: (){
+          Get.to(AddProductPage());
+        }),
+      ),
     );
   }
 }
