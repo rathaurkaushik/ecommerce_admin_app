@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:ecommerce_admin/widgets/custom_text_field.dart';
 import 'package:ecommerce_admin/widgets/dropdown_btn.dart';
 import 'package:flutter/material.dart';
@@ -11,53 +10,92 @@ class AddProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Add Product'),
+        title: const Text('Add Product'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
                 child: Text(
                   'Add New Product',
                   style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.deepPurple,
-                      fontWeight: FontWeight.bold),
+                    fontSize: 30,
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              SizedBox(height: 10,),
-              CustomTextField(hintText: 'Product Name'),
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(
+              const SizedBox(height: 20),
+              const CustomTextField(hintText: 'Product Name'),
+              const SizedBox(height: 10),
+              const CustomTextField(
                 hintText: 'Product Description',
                 maxLines: 4,
               ),
-              SizedBox(
-                height: 10,
+              const SizedBox(height: 10),
+              const CustomTextField(hintText: 'Image URL'),
+              const SizedBox(height: 10),
+              const CustomTextField(hintText: 'Product Price'),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: DropdownBtn(
+                      items: ['Cat1', 'Cat2', 'Cat3'],
+                      selectedItem: 'Category', onSelected: (selectedValue) {
+                        print(selectedValue);
+                    },
+                    ),
+                  ),
+                  const SizedBox(width: 10), // Proper spacing for Row
+                  Expanded(
+                    child: DropdownBtn(
+                      items: ['Brand1', 'Brand2', 'Brand3'],
+                      selectedItem: 'Brand', onSelected: (selectedValue) {  },
+                    ),
+                  ),
+                ],
               ),
-              CustomTextField(hintText: 'Image Url'),
-              SizedBox(
-                height: 10,
+              const SizedBox(height: 20),
+              Center(
+                child: Text(
+                  'Offer Product ?',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ),
-              CustomTextField(hintText: 'Product Price'),
-              SizedBox(height: 10,),
-Row(children: [
-  DropdownBtn(),
-  SizedBox(height: 10,),
-  DropdownBtn(),
-  Center(child: Text('Offer Product ? '),),
-  DropdownBtn(),
-  SizedBox(height: 20,),
-  InkWell(child:   Container(
-    decoration: BoxDecoration(border: Border.),
-    child: Text('Add Product'),
-  ))
-],)
-
+              const SizedBox(height: 10),
+              Center(
+                  child: DropdownBtn(
+                items: ['true', 'false'], selectedItem: 'Offer', onSelected: (selectedValue) {  },
+              )),
+              const SizedBox(height: 30),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    // Handle product submission
+                    print('Add Product button tapped!');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Text(
+                      'Add Product',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
