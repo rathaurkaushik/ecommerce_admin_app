@@ -20,8 +20,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  json_annotation: ^4.9.0
 
   flutter_lints: ^4.0.0
+  json_serializable: ^6.9.2
+  build_runner: ^2.4.14
 
 # The following section is specific to Flutter packages.
 flutter:
